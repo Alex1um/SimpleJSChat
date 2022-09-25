@@ -18,6 +18,8 @@ const chatRef = ref(db, "chat");
 
 const msg_block = document.getElementById("msg-box")
 
+msg_block.scrollTop = msg_block.scrollHeight;
+
 onChildAdded(chatRef, function add_message(msg) {
     let new_div = document.createElement("div")
     new_div.className = "msg row p-2"
@@ -27,13 +29,9 @@ onChildAdded(chatRef, function add_message(msg) {
     <span class="col-3"></span>
     `
 
-    // new_div.appendChild(document.createTextNode(msg.val().message))
     msg_block.appendChild(new_div)
+    msg_block.scrollTop = msg_block.scrollHeight;
 }
-// ,
-//     {
-//         onlyOnce: true
-//     }
 )
 
 // const address = "https://test-80e7e-default-rtdb.europe-west1.firebasedatabase.app/chat.json"
