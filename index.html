@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-<main class="container">
-    <section class="row" id="msg-box">
-
-    </section>
-    <section class="row">
-        <div class="row">
-            <div class="col">
+<main id="msg-control" class="container-xl">
+    <section class="d-grid gap-3" id="msg-box"></section>
+    <section class="fixed-bottom container-md h-25">
+        <div class="row container align-self-center">
+            <div class="col-10 h-75">
                 <textarea class="form-control overflow-auto" id="msg-input"></textarea>
             </div>
-            <div class="col-sm-1 align-self-center">
+            <div class="col-2 align-self-center">
                 <button class="form-control btn-primary" id="msg-send">Send</button>
             </div>
         </div>
-    </section>
 </main>
+</section>
 <!--<script type="module" src="https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"></script>-->
 <!--<script type="module" src="https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"></script>-->
 <script type="module" src="./index.js"></script>

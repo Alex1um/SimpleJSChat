@@ -19,10 +19,16 @@ const chatRef = ref(db, "chat");
 const msg_block = document.getElementById("msg-box")
 
 onChildAdded(chatRef, function add_message(msg) {
-    let new_span = document.createElement("span")
-    new_span.className = "msg"
-    new_span.appendChild(document.createTextNode(msg.val().message))
-    msg_block.appendChild(new_span)
+    let new_div = document.createElement("div")
+    new_div.className = "msg row p-2"
+    new_div.innerHTML = `
+    <span class="col-auto"></span>
+    <span class="col-8 border rounded-pill">${msg.val().message}</span>
+    <span class="col-3"></span>
+    `
+
+    // new_div.appendChild(document.createTextNode(msg.val().message))
+    msg_block.appendChild(new_div)
 }
 // ,
 //     {
@@ -30,27 +36,27 @@ onChildAdded(chatRef, function add_message(msg) {
 //     }
 )
 
+// const address = "https://test-80e7e-default-rtdb.europe-west1.firebasedatabase.app/chat.json"
+// const es = new EventSource(address)
+// es.onmessage = (e) => {
+//     console.log(e)
+//     console.log("kekw")
+// }
+// es.onopen = (e) => {
+//     console.log(e)
+//     console.log("connected")
+// }
+
+
 function send() {
-    // let xhr = new XMLHttpRequest()
-    // xhr.open("POST", address)
-    // xhr.setRequestHeader("Accept", "application/json");
-    // xhr.setRequestHeader("Content-Type", "application/json");
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4) {
-    //         console.log(xhr.status);
-    //         console.log(xhr.responseText);
-    //     }
-    // };
-    // let data = `{
-    //     "message": "${msg_input.value}"
-    // }`;
-    // alert(data)
-    push(chatRef,
-        {
-          message: msg_input.value
-        }
-    )
-    // xhr.send(data.toString())
+    if (msg_input.value !== "") {
+        push(chatRef,
+            {
+                message: msg_input.value + "\n\n"
+            }
+        )
+        msg_input.value = ""
+    }
 }
 
 const msg_input = document.getElementById("msg-input")
