@@ -27,10 +27,10 @@ onChildAdded(chatRef, function add_message(msg) {
     new_div.className = "msg row p-2"
     if (val.name === name) {
         new_div.innerHTML = `
-        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle p-2"><span class="visually-hidden">New message</span></span></span>
+        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle"><span class="visually-hidden">New message</span></span></span>
         <fieldset class="col-8 border rounded-2 p-1 position-relative">
-            <legend class="position-absolute top-0 start-0 translate-middle w-auto bg-light mx-5 rounded-pill">${val.name}</legend>
-            <p class="text-break m-0 p-2">${val.message}</p>
+            <legend class="float-none w-auto mx-5 mx-sm-1 my-0">${val.name}</legend>
+            <p class="text-break m-0 p-2 pt-0">${val.message}</p>
         </fieldset>
         <span class="col-3"></span>
         `
@@ -38,10 +38,10 @@ onChildAdded(chatRef, function add_message(msg) {
         new_div.innerHTML = `
         <span class="col-3"></span>
         <fieldset class="col-8 border rounded-2 p-1 position-relative">
-            <legend class="position-absolute top-0 start-0 translate-middle w-auto bg-light mx-5 rounded-pill">${val.name}</legend>
-            <p class="text-break m-0 p-2">${val.message}</p>
+            <legend class="float-none w-auto mx-sm-1 my-0">${val.name}</legend>
+            <p class="text-break m-0 p-2 pt-0">${val.message}</p>
         </fieldset>
-        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle p-2"><span class="visually-hidden">New message</span></span></span>
+        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle"><span class="visually-hidden">New message</span></span></span>
     `
     }
 
