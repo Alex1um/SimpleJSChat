@@ -25,7 +25,7 @@ onChildAdded(chatRef, function add_message(msg) {
     new_div.className = "msg row p-2"
     new_div.innerHTML = `
     <span class="col-auto"></span>
-    <span class="col-8 border rounded-pill">${msg.val().message}</span>
+    <span class="col-8 border rounded-2 text-break p-1">${msg.val().message}</span>
     <span class="col-3"></span>
     `
 
