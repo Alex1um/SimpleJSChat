@@ -14,7 +14,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const chatRef = ref(db, "chat");
+let chatRef = ref(db, "chat");
+let name = prompt("name?")
 
 const msg_block = document.getElementById("msg-box")
 
@@ -22,12 +23,27 @@ msg_block.scrollTop = msg_block.scrollHeight;
 
 onChildAdded(chatRef, function add_message(msg) {
     let new_div = document.createElement("div")
+    let val = msg.val()
     new_div.className = "msg row p-2"
-    new_div.innerHTML = `
-    <span class="col-auto"></span>
-    <span class="col-8 border rounded-2 text-break p-1">${msg.val().message}</span>
-    <span class="col-3"></span>
+    if (val.name === name) {
+        new_div.innerHTML = `
+        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle p-2"><span class="visually-hidden">New message</span></span></span>
+        <fieldset class="col-8 border rounded-2 p-1 position-relative">
+            <legend class="position-absolute top-0 start-0 translate-middle w-auto bg-light mx-5 rounded-pill">${val.name}</legend>
+            <p class="text-break m-0 p-2">${val.message}</p>
+        </fieldset>
+        <span class="col-3"></span>
+        `
+    } else {
+        new_div.innerHTML = `
+        <span class="col-3"></span>
+        <fieldset class="col-8 border rounded-2 p-1 position-relative">
+            <legend class="position-absolute top-0 start-0 translate-middle w-auto bg-light mx-5 rounded-pill">${val.name}</legend>
+            <p class="text-break m-0 p-2">${val.message}</p>
+        </fieldset>
+        <span class="col-auto align-self-center"><span class="bg-primary rounded-circle p-2"><span class="visually-hidden">New message</span></span></span>
     `
+    }
 
     msg_block.appendChild(new_div)
     msg_block.scrollTop = msg_block.scrollHeight;
@@ -50,7 +66,8 @@ function send() {
     if (msg_input.value !== "") {
         push(chatRef,
             {
-                message: msg_input.value + "\n\n"
+                message: msg_input.value + "\n\n",
+                name: name
             }
         )
         msg_input.value = ""
