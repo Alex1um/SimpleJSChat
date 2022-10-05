@@ -27,15 +27,16 @@ const msg_block = document.getElementById("msg-box")
 const msg_input = document.getElementById("msg-input")
 
 let auth_req = new XMLHttpRequest();
-// auth_req.onreadystatechange = start_chat
+auth_req.onreadystatechange = start_chat
 // auth_req.addEventListener("onreadystatechange", start_chat)
-form.addEventListener("submit", process_req_fetch)
+form.addEventListener("submit", process_req)
+// const auth_addr = "http://localhost:8080"
+const auth_addr = "https://firebase-auth.fly.dev"
 
 function process_req(e) {
     e.preventDefault()
-    auth_req.open('POST', "https://auth.weplaywith.cf", false);
-    auth_req.setRequestHeader("Access-Control-Allow-Origin", "https://auth.weplaywith.cf")
-    auth_req.setRequestHeader("mode", "no-cors")
+    auth_req.open('POST', auth_addr, false);
+    auth_req.setRequestHeader("Access-Control-Allow-Origin", auth_addr)
 
     auth_req.send(JSON.stringify({
         name: name_inp.value,
@@ -45,17 +46,16 @@ function process_req(e) {
     return false
 }
 
-const auth_addr = "https://firebase-auth.fly.dev"
-// const auth_addr = "http://localhost:8080"
 
 async function process_req_fetch(e) {
     e.preventDefault()
     await fetch(auth_addr, {
         method: "POST",
-        // mode: "no-cors",
+        mode: "cors",
 
         headers: {
-            "Access-Control-Allow-Origin": auth_addr,
+            "Access-Control-Allow-Origin": "*",
+            // "Access-Control-Allow-Origin": auth_addr,
             // "Origin": window.location.href,
             // 'Content-Type': 'application/json',
         },
