@@ -26,12 +26,11 @@ const pass_inp = document.getElementById("auth-form-pass")
 const msg_block = document.getElementById("msg-box")
 const msg_input = document.getElementById("msg-input")
 
-let auth_req = new XMLHttpRequest();
-auth_req.onreadystatechange = start_chat
-// auth_req.addEventListener("onreadystatechange", start_chat)
-form.addEventListener("submit", process_req)
-// const auth_addr = "http://localhost:8080"
-const auth_addr = "https://firebase-auth.fly.dev"
+// let auth_req = new XMLHttpRequest();
+// auth_req.onreadystatechange = start_chat
+// form.addEventListener("submit", process_req)
+form.addEventListener("submit", process_req_fetch)
+const auth_addr = "https://auth.weplaywith.cf"
 
 function process_req(e) {
     e.preventDefault()
