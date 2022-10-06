@@ -74,12 +74,12 @@ function send() {
                 name: name,
             }
         )
-        console.log(
-            JSON.stringify({
-                message: msg_input.value + "\n\n",
-                name: name,
-            })
-        )
+        // console.log(
+        //     JSON.stringify({
+        //         message: msg_input.value + "\n\n",
+        //         name: name,
+        //     })
+        // )
         msg_input.value = ""
     }
 }
