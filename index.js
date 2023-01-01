@@ -28,7 +28,7 @@ signInWithCustomToken(auth, token)
         name = userCredntial.user.uid
     })
     .catch((error) => {
-        location.href = "https://auth.weplaywith.cf/"
+        location.href = "https://auth.just-use.ml/"
     })
 
 // form.onsubmit = process_req
